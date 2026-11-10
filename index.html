@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>THASSA — Study Studio</title><meta name="description" content="Private, distraction-free flashcards and focus sessions that work entirely in your browser.">
+<link rel="stylesheet" href="style.css"></head>
+<body>
+<div class="shell">
+<header><div class="brand"><span class="logo">T</span><strong>THASSA<span class="dot">.</span></strong></div><span class="status">LOCAL-FIRST STUDY TOOLS</span></header>
+<main>
+<section class="hero"><p class="eyebrow">YOUR DESK. YOUR PACE.</p><h1>Make every study session <em>count.</em></h1><p>Turn your own notes into flashcards, test yourself and stay focused. Nothing leaves your browser.</p></section>
+<section class="workspace">
+<div class="panel editor">
+<div class="panel-heading"><div><span class="eyebrow">01 / BUILD</span><h2>Your flashcards</h2></div><span class="pill" id="count">0 cards</span></div>
+<label for="notes">One concept per line, formatted as <code>term: explanation</code></label>
+<textarea id="notes" spellcheck="false" placeholder="Photosynthesis: Plants convert light into chemical energy&#10;Newton's first law: An object maintains its state of motion unless acted on by a net force"></textarea>
+<div class="actions"><button id="generate" class="primary">Create flashcards <span>↗</span></button><button id="clear" class="secondary">Clear</button></div>
+<p class="small">Tip: use one colon per line; everything after the first colon becomes the answer.</p>
+</div>
+<div class="panel viewer">
+<div class="panel-heading"><div><span class="eyebrow">02 / REVIEW</span><h2>Active recall</h2></div><span class="pill" id="progress">0 / 0</span></div>
+<button id="flashcard" class="flashcard" aria-label="Flip the flashcard to show the answer"><span id="card-side">QUESTION</span><span id="card-text">Add notes on the left to begin.</span><small id="card-hint">Click to flip</small></button>
+<div class="actions space-between"><button id="previous" class="secondary">← Previous</button><button id="shuffle" class="secondary">Shuffle</button><button id="next" class="primary">Next →</button></div>
+</div>
+</section>
+<section class="focus panel">
+<div><span class="eyebrow">03 / FOCUS</span><h2>Your focus timer</h2><p class="sub">Keep one task in view, and take regular breaks.</p><div class="modes"><button id="focus-mode" class="mode active">Focus · 25m</button><button id="break-mode" class="mode">Break · 5m</button></div></div>
+<div class="timer-panel"><div id="clock" class="clock" role="timer" aria-live="off">25:00</div><div class="actions"><button id="timer-toggle" class="primary">Start</button><button id="timer-reset" class="secondary">Reset</button></div></div>
+</section>
+</main><footer>THASSA Study Studio · No account · No trackers · Educational prototype</footer>
+</div>
+<script src="flashcards.js"></script><script src="app.js"></script>
+</body></html>
