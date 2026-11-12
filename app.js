@@ -63,3 +63,28 @@ document.addEventListener('keydown', event => {
   if (event.key === 'ArrowLeft') rotateCards(-1);
 });
 buildCards(); updateClock();
+
+get('export').addEventListener('click', () => {
+  const blob = new Blob([get('notes').value], {type: 'text/plain;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url; link.download = 'thassa-flashcards.txt'; link.click();
+  setTimeout(() => URL.revokeObjectURL(url), 0);
+});
+get('import-file').addEventListener('change', async (event) => {
+  const file = event.target.files?.[0];
+  if (!file) return;
+  if (file.size > 100 * 1024) {
+    alert('Import a plain-text notes file under 100 KB.');
+    event.target.value = '';
+    return;
+  }
+  const raw = await file.text();
+  if (!THASSA.parseFlashcards(raw).length) {
+    alert('No valid cards found. Use term: explanation lines.');
+    event.target.value = '';
+    return;
+  }
+  get('notes').value = raw;
+  safeSave(); buildCards(); event.target.value = '';
+});
