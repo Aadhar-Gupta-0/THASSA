@@ -5,4 +5,7 @@ assert.deepEqual(parseFlashcards(' : bad\nterm:'), []);
 assert.deepEqual(parseFlashcards(null), []);
 const order = shuffledIndices(5, () => 0.3);
 assert.deepEqual(order.slice().sort(), [0,1,2,3,4]);
-console.log('THASSA flashcard tests passed');
+assert.deepEqual(shuffledIndices(3, () => 1).slice().sort(),[0,1,2]);
+assert.deepEqual(shuffledIndices(3, () => -3).slice().sort(),[0,1,2]);
+assert.equal(parseFlashcards('Bad\nA: useful').length,1);
+console.log('THASSA flashcard and shuffle regression tests passed');
