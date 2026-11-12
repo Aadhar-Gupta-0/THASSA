@@ -13,7 +13,8 @@
   function shuffledIndices(length, random = Math.random) {
     const indices = Array.from({ length }, (_, i) => i);
     for (let i = indices.length - 1; i > 0; i--) {
-      const j = Math.floor(random() * (i + 1));
+      const sample = Math.max(0, Math.min(0.999999999999, Number(random()) || 0));
+      const j = Math.floor(sample * (i + 1));
       [indices[i], indices[j]] = [indices[j], indices[i]];
     }
     return indices;
