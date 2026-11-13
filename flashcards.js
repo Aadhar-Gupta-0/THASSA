@@ -1,7 +1,7 @@
 (function (root) {
   'use strict';
   function parseFlashcards(raw) {
-    if (typeof raw !== 'string') return [];
+    if (typeof raw !== 'string' || raw.length > 100 * 1024) return [];
     return raw.split(/\r?\n/).slice(0, 200).map(line => {
       const index = line.indexOf(':');
       if (index < 1) return null;
@@ -11,6 +11,7 @@
     }).filter(Boolean);
   }
   function shuffledIndices(length, random = Math.random) {
+    if (!Number.isSafeInteger(length) || length < 0 || length > 200) return [];
     const indices = Array.from({ length }, (_, i) => i);
     for (let i = indices.length - 1; i > 0; i--) {
       const sample = Math.max(0, Math.min(0.999999999999, Number(random()) || 0));
